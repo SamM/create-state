@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+        <script src="/Matrix.js"></script>
+        <script src="/CreateState.js"></script>
+    </head>
+    <body>
+        <h1>{{path}}</h1>
+        <h3>{{title}}</h3>
+        <code id="data"></code>
+        <script>
+            CreateState.update("{{path}}")
+            (function(node){
+                let value = node.get();
+                if(typeof value === 'function') value = value.source;
+                document.getElementById('data').textContent = value + '';
+            });
+        </script>
+    </body>
+</html>
