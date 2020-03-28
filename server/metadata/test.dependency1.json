@@ -1,6 +1,1 @@
-{
-    "name": "Test Dependency Number",
-    "dependencies" : [],
-    "type": "number",
-    "creator": "Sam"
-}
+{"title":"Test Dependency Number","dependencies":[],"type":"number","creator":"Sam"}

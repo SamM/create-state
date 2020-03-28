@@ -41,7 +41,7 @@ function Matrix(name, above, top){
     Access.address = function(){
         return Node['.']; // typeof string
     }
-    Access.name = function(){
+    Access.id = function(){
         return Node['']; // typeof string
     };
     Access.set = function(value){
@@ -103,6 +103,41 @@ function Matrix(name, above, top){
         }
         if(path.length == 1) return true; // Access function
         return node().exists(path.slice(1)); // Access function
+    };
+    Access.delete = function(path){ 
+        if(typeof path === 'string' || typeof path === 'number'){
+            path = path+'';
+            path = path.split(Matrix.seperatorRegexp);
+        }
+        else if(!Array.isArray(path)) throw new Error( 'Path must be a string or Array');
+
+        let node;
+        let step = path[0];
+
+        if(path.join('.') === '.'){
+            node = Node['..']
+            delete node().up()()[node().id()];
+            return Access; // Access function
+        }else if(step === ''){
+            node = Node['..']
+        }else{
+            if(typeof step !== 'string') throw new Error( 'Path array must only contain strings');
+            step = step.split(Matrix.unallowedCharacterRegexp).join('');
+            if(step !== ''){
+                if(typeof Node[step] === 'function'){
+                    node = Node[step]
+                }else{
+                    node = Matrix(step, Node);
+                }
+            }else{
+                node = Node;
+            }
+        }
+        if(path.length == 1){
+            delete node().up()()[node().id()];
+            return Access; // Access function
+        }
+        return node().delete(path.slice(1)); // Access function
     };
     Access.build = function(path){ 
         if(typeof path === 'string' || typeof path === 'number'){

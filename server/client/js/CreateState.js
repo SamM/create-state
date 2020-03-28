@@ -32,6 +32,48 @@ var CreateState = (function(){
     CreateState.Data = Matrix();
     CreateState.MetaData = Matrix();
 
+    CreateState.sendPostData = function(url, data){
+        let urlEncodedData = "",
+            urlEncodedDataPairs = [],
+            name,
+            callback = llac();
+
+        // Turn the data object into an array of URL-encoded key/value pairs.
+        for( name in data ) {
+            urlEncodedDataPairs.push( encodeURIComponent( name ) + '=' + encodeURIComponent( data[name] ) );
+        }
+
+        // Combine the pairs into a single string and replace all %-encoded spaces to 
+        // the '+' character; matches the behaviour of browser form submissions.
+        urlEncodedData = urlEncodedDataPairs.join( '&' );
+
+        console.log('Send Data:');
+        console.log(urlEncodedData);
+
+        const http = new XMLHttpRequest();
+        // Define what happens on successful data submission
+        http.addEventListener( 'load', function(event) {
+            callback.return(null, http.responseText+"");
+        } );
+
+        // Define what happens in case of error
+        http.addEventListener( 'error', function(event) {
+            console.log(http.responseText);
+            callback.return(event);
+        });
+
+        // Set up our request
+        http.open( 'POST', url );
+
+        // Add the required HTTP header for form data POST requests
+        http.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+
+        // Finally, send our data.
+        http.send( urlEncodedData );
+
+        return callback;
+    }
+
     // Data used by update function
     CreateState.baseURL = '/';
     CreateState.pathSeperator = '.';

@@ -1,10 +1,10 @@
 {
-    "name": "CreateState Data Editor",
-    "dependencies" : ["html", "styled"],
-    "type": "function",
-    "creator" : "Sam",
-    "contributors" : ["Sam"],
-    "display" : {
-        "template" : "hash.html"
-    }
+	"title" : "CreateState Data Editor",
+	"dependencies" : ["html", "styled"],
+	"type" : "function",
+	"creator" : "Sam",
+	"contributors" : ["Sam"],
+	"display" : {
+		"template" : "hash.html"
+	}
 }

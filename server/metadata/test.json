@@ -1,7 +1,7 @@
 {
-    "name": "Test Function",
-    "dependencies" : ["test.dependency1"],
-    "type": "function",
-    "creator" : "Sam",
-    "contributors" : ["Sam"]
+"title":"Test Function",
+"dependencies":["test.dependency1"],
+"type":"function",
+"creator":"Sam",
+"contributors":["Sam"]
 }
