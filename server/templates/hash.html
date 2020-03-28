@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>{{path}}</title>
+        <script src="/js/Matrix.js"></script>
+        <script src="/js/CreateState.js"></script>
+    </head>
+    <body>
+        <script>
+            CreateState.update('{{path}}')
+            (function(node){
+                let generator = node.get();
+                if(typeof generator == 'function'){
+                    function updateGenerator(){
+                        let hash = window.location.hash;
+                        if(hash[0] === '#') hash = hash.slice(1);
+                        generator(hash);
+                    }
+                    window.addEventListener("hashchange", updateGenerator, false);
+                    updateGenerator();
+                }
+            })
+        </script>
+    </body>
+</html>

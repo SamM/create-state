@@ -1,0 +1,170 @@
+
+html, body{
+    position: relative;
+    background-color: hsl(200, 33%, 70%);
+    margin: 0;
+    padding: 0;
+}
+textarea::selection {
+    background-color: hsl(200, 33%, 70%);
+    color: white;
+}
+body, input {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#editor {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+h1{
+    background-color: rgba(0,0,0,0.1);
+    margin: 0;
+    padding: 12px 0;
+    color: hsla(0,0%,0%,0.65);
+    font-size: 20px;
+    border: 2px solid hsla(0,0%,0%,0.33);
+    text-indent: 15px;
+    width:75%;
+    position: relative;
+}
+#save{
+    display: inline-block;
+    padding: 15px 12px 14px 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: hsla(0,0%,0%, 0.25);
+    border: 0;
+    text-shadow: rgba(0,0,0,0.25) 2px 2px 1px;
+    outline: none;
+    width: 76px;
+}
+#save:hover{
+    background-color: hsla(95,100%,34%,0.8);
+}
+#save:focus{
+    background-color: hsla(95,100%,36%,0.33);
+}
+#revert{
+    display: inline-block;
+    padding: 15px 12px 14px 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    position: absolute;
+    right: 74px;
+    top: 0;
+    background-color: hsla(0,0%,0%, 0.25);
+    border: 0;
+    text-shadow: rgba(0,0,0,0.25) 2px 2px 1px;
+    outline: none;
+    width: 100px;
+}
+#revert:hover{
+    background-color: hsla(0,100%,34%,0.8);
+}
+#revert:focus{
+    background-color: hsla(0,100%,36%,0.33);
+}
+form{
+    margin:0;
+    padding:0;
+    display:block;
+    position: relative;
+    background-color: hsla(0,0%,100%,0.95);
+    border: 2px solid hsla(0,0%,100%,0.5);
+    padding: 10px 0;
+    position: relative;
+    text-indent: 10px;
+    width:75%;
+}
+form::before{
+    content: 'Variable : ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    text-indent: 18px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(0,0,0,0.45);
+}
+#variable_name {
+    background-color: transparent;
+    border: 0;
+    display: block;
+    width: 100%;
+    outline: none;
+    font-size: 20px;
+    color: rgba(0,0,0,0.85);
+    position: relative;
+    text-indent: 115px;
+    padding: 0;
+    margin:0;
+}
+#metadata{
+    position: absolute;
+    top: 0;
+    bottom: 0px;
+    height: auto;
+    right: 0;
+    width: 25%;
+    font-size: 16px;
+    text-align: center;
+    overflow-y: auto;
+    border-left: 10px solid hsla(0,0%,0%, 0.65);
+    background-color: hsla(0,0%,0%, 0.5);;
+}
+#metadata label{
+    text-align: left;
+    display: block;
+    height: 28px;
+    background-color: hsla(0,0%,0%, 0.15);
+    margin: 6px 6px 40px 6px;
+    line-height: 28px;
+    font-weight: bold;
+    text-indent: 9px;
+    color: white;
+    letter-spacing: 1px;
+}
+#metadata label input{
+    width: 100%;
+    font-size: 16px;
+    display: block;
+    text-indent: 9px;
+    line-height: 28px;
+}
+textarea, h1, form, #metadata, #save, #revert{
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+textarea {
+    position: absolute;
+    top: 96px;
+    bottom: 0px;
+    height: auto;
+    right: 25%;
+    left: 0;
+    width: 75%;
+    padding: 12px;
+    background-color: hsla(0,0%,100%,0.35);
+    font-size: 16px;
+    border: 1px solid white;
+    outline: none;
+    color: hsla(0,0%,0%,0.65);
+}
+.accepted {
+    color: hsl(95,100%,32%)!important;
+}
+.rejected {
+    color: hsl(0,100%,32%)!important;
+}

@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Edit : {{path}}</title>
+        <script src="/js/Matrix.js"></script>
+        <script src="/js/CreateState.js"></script>
+    </head>
+    <body>
+        <script>
+            CreateState.update('editor')
+            (function(node){
+                let editor = node.get();
+
+                function updateFromHash(){
+                    let hash = window.location.hash;
+                    if(hash[0] === '#') hash = hash.slice(1);
+                    if(hash.length == 0) hash = "{{path}}";
+                    editor(hash);
+                }
+                window.addEventListener("hashchange", updateFromHash, false);
+                updateFromHash();
+            })
+        </script>
+    </body>
+</html>

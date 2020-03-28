@@ -2,5 +2,5 @@
     "name": "Test Dependency Number",
     "dependencies" : [],
     "type": "number",
-    "author": "Sam Mulqueen"
+    "creator": "Sam"
 }

@@ -1,0 +1,10 @@
+{
+    "name": "Stylesheet Importer",
+    "dependencies" : [],
+    "type": "function",
+    "creator" : "Sam",
+    "contributors" : ["Sam"],
+    "display" : {
+        "template" : "hash.html"
+    }
+}

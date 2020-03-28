@@ -116,12 +116,13 @@ var CreateState = (function(){
                 }else{
                     str = http.responseText;
                 }
-                let value;
+                let value = null;
                 let metadata = CreateState.MetaData().go(path).get() || {};
                 switch(metadata.type){
                     case 'function':
                         let comments = /\/\*[\s\S]*?(?=\*\/)*\*\/|\/\/[^\n\r]*[\n\r]+/g;
-                        str = str.split(comments).join('');
+                        //str = str.split(comments).join('');
+                        
                         /// The following is taken from: https://gist.github.com/lamberta/3768814
                         var fn_body_idx = str.indexOf('{'),
                         fn_body = str.substring(fn_body_idx+1, str.lastIndexOf('}')),
@@ -163,7 +164,8 @@ var CreateState = (function(){
                         }
                         break;
                     default:
-                        value = null;
+                        callback.return(CreateState.Data().go(path));
+                        return;
                         break;
                 }
                 callback.return(CreateState.Data().build(path).set(value));

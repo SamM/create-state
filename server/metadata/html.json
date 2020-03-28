@@ -1,0 +1,10 @@
+{
+    "name": "HTML DOM Builder",
+    "dependencies" : [],
+    "type": "function",
+    "creator" : "Sam",
+    "contributors" : ["Sam"],
+    "display" : {
+        "template" : "universal.html"
+    }
+}

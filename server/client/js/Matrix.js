@@ -34,6 +34,7 @@ function Matrix(name, above, top){
     Access.top = function(){
         return Node['...'](); // Access function
     };
+    Access.root = Access.base = Access.top;
     Access.up = function(){
         return Node['..'](); // Access function
     };
@@ -90,10 +91,14 @@ function Matrix(name, above, top){
         }else{
             if(typeof step !== 'string') throw new Error( 'Path array must only contain strings');
             step = step.split(Matrix.unallowedCharacterRegexp).join('');
-            if(typeof Node[step] === 'function'){
-                node = Node[step]
+            if(step !== ''){
+                if(typeof Node[step] === 'function'){
+                    node = Node[step]
+                }else{
+                    return false;
+                }
             }else{
-                return false;
+                node = Node;
             }
         }
         if(path.length == 1) return true; // Access function
@@ -116,15 +121,22 @@ function Matrix(name, above, top){
         }else{
             if(typeof step !== 'string') throw new Error( 'Path array must only contain strings');
             step = step.split(Matrix.unallowedCharacterRegexp).join('');
-            if(typeof Node[step] === 'function'){
-                node = Node[step]
+            if(step !== ''){
+                if(typeof Node[step] === 'function'){
+                    node = Node[step]
+                }else{
+                    node = Matrix(step, Node);
+                    Node[step] = node;
+                }
             }else{
-                Node[step] = node = Matrix(step, Node)
+                node = Node;
             }
+            
         }
         if(path.length == 1) return node(); // Access function
         return node().build(path.slice(1)); // Access function
     };
+    Access.init = Access.build;
     Access.touch = function(path){
         Access.build(path);
         return Access; // Access function
@@ -146,11 +158,16 @@ function Matrix(name, above, top){
         }else{
             if(typeof step !== 'string') throw new Error( 'Path array must only contain strings');
             step = step.split(Matrix.unallowedCharacterRegexp).join('');
-            if(typeof Node[step] === 'function'){
-                node = Node[step]
+            if(step !== ''){
+                if(typeof Node[step] === 'function'){
+                    node = Node[step]
+                }else{
+                    // Next step can't be found, create a virtual branch
+                    // Don't append it to this node like in build method
+                    node = Matrix(step, Node);
+                }
             }else{
-                // Next step can't be found, stop here
-                return Access; // Access function
+                node = Node;
             }
         }
         if(path.length == 1) return node(); // Access function

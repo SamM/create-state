@@ -2,6 +2,6 @@
     "name": "Test Function",
     "dependencies" : ["test.dependency1"],
     "type": "function",
-    "creator" : "Sam Mulqueen",
-    "contributors" : ["Sam Mulqueen"]
+    "creator" : "Sam",
+    "contributors" : ["Sam"]
 }
